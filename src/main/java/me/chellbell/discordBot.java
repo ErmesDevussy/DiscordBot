@@ -17,7 +17,7 @@ import net.dv8tion.jda.api.entities.Activity;
 
 public class discordBot {
     public static void main(String[] args) throws LoginException {
-        JDA jda = JDABuilder.createDefault("MTM1NjIxMzcyMjE2MjQwMTQ2MA.GO8BNa.6sv2bJvJzB5NgGQE2Buy50Zy5WrE8ffBOo3NLU")
+        JDA jda = JDABuilder.createDefault("")
             .setActivity(Activity.playing("Balling"))
             // .addEventListeners(new SlahsBotExpample())
             .build();
