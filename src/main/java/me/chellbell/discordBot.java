@@ -13,7 +13,7 @@ public class discordBot extends ListenerAdapter {
     public static void main(String[] args) throws LoginException, InterruptedException {
         JDA jda = JDABuilder.createDefault("")
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
-                .setActivity(Activity.watching("the Pale wide younder."))
+                .setActivity(Activity.watching("the Pale wide yonder."))
                 .addEventListeners(new BotLogger())
                 .addEventListeners(new BotSlashComands())
                 .build();
