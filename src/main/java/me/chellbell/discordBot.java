@@ -5,6 +5,7 @@ import javax.security.auth.login.LoginException;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.exceptions.RateLimitedException;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 
@@ -16,6 +17,7 @@ public class discordBot extends ListenerAdapter {
                 .setActivity(Activity.watching("the Pale wide yonder."))
                 .addEventListeners(new BotLogger())
                 .addEventListeners(new BotSlashComands())
+                .addEventListeners(new botAudio())
                 .build();
     }
 }
