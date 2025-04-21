@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import org.jetbrains.annotations.NotNull;
 
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
@@ -14,9 +15,7 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 
 public class BotSlashComands extends ListenerAdapter {
 
-    @Override
-    public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        // Array dla komendy '/quote'
+    public void Quotes() {
         ArrayList<String> quotes = new ArrayList<String>();
         quotes.add("```Okay. I wanted to become an aerostatic pilot. Then I turned ten and realized we no longer have an air force.```");
         quotes.add("```Got any dope? We need some dope bad. I got the *Boogie Street* shakes.```");
@@ -30,7 +29,19 @@ public class BotSlashComands extends ListenerAdapter {
         quotes.add("```You're barking up the wrong tree. I don't speak a word of Seolite, I've never met either one of my grandparents. And I've never *been* to Seol. He seems almost proud of these things. I'm a regular Revacholiere.```");
         quotes.add("```Don't you *Welcome to Revachol* me, the lieutenant fires back. My grandfather came to here from a three-thousand-year-old racist-isolationist culture, while your ancestors came to this island a mere three hundred years ago...```");
         quotes.add("```For real detective work, nothing beats a good notebook by your side...```");
-        // koniec Array
+
+        Random random = new Random();
+        int randItem = random.nextInt(quotes.size());
+    }
+
+    @Override
+    public void onGuildMemberJoin(GuildMemberJoinEvent event) {
+        // String userTag = event.getUser().getAsMention();
+        // event.reply("Hello detective " + userTag +".").queue();
+    }
+
+    @Override
+    public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
 
         String command = event.getName();
         switch (command) {
@@ -40,9 +51,6 @@ public class BotSlashComands extends ListenerAdapter {
                 break;
         
             case "quote":
-                Random random = new Random();
-                int randItem = random.nextInt(quotes.size());
-
                 event.reply(quotes.get(randItem)).queue();
                 break;
 
@@ -62,5 +70,4 @@ public class BotSlashComands extends ListenerAdapter {
         commandData.add(Commands.slash("quote", "Random Kim wisdom."));
         event.getGuild().updateCommands().addCommands(commandData).queue();
     }
-    
 }

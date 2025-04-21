@@ -12,7 +12,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 
 public class discordBot extends ListenerAdapter {
     public static void main(String[] args) throws LoginException, InterruptedException {
-        JDA jda = JDABuilder.createDefault("")
+        JDA jda = JDABuilder.createDefault("nyah")
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .setActivity(Activity.watching("the Pale wide yonder."))
                 .addEventListeners(new BotLogger())
